@@ -33,6 +33,9 @@ int service_register(int argc, char *argv[])
         service_argv = calloc((size_t)(argc + 1), sizeof(void*));
         for (i = 0; i < argc; i++) {
             service_argv[i] = strdup(argv[i]);
+            if (service_argv[i] == NULL) {
+                return 1;
+            }
         }
     }
 
